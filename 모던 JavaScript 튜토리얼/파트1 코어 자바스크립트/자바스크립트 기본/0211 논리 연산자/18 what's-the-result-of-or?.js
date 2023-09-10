@@ -1,0 +1,1 @@
+alert( null || 2 || undefined ); // 첫 번째 truthy 2
