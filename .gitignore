@@ -89,4 +89,13 @@ fabric.properties
 !.idea/codeStyles
 !.idea/runConfigurations
 
+# ESLint cache
+.eslintcache
+
+# Jest artifacts
+coverage/
+
+# Node modules
+node_modules/
+
 # End of https://www.toptal.com/developers/gitignore/api/webstorm+all
