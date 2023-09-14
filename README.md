@@ -3,7 +3,7 @@
 ## 다시보기
 [메소드체이닝](https://ko.javascript.info/object-methods)
 - this 바인딩 : 일반함수 / 화살표함수
-
+- [생성자로 래퍼 객체를 만들지마세요.](https://ko.javascript.info/primitives-methods)
 ## 객체
 - 원시형 타입 : 하나의 데이터만 담을 수 있다.
 - 객체형 타입 : 다양한 데이터를 담을 수 있다.
