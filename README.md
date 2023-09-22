@@ -1,5 +1,16 @@
 # JavaScript 정리 [문서 요약 정리]
 
+백틱은 줄바꿈이 가능하다. 따옴표(큰, 작은)는 불가능하다. 줄바꿈을 하려면 개행문자가 필요하다.
+
+NaN -> Not a Number
+
+parseInt, Number
+parseInt는 해석할 수 있는 최대로 해석함. -> 숫자를 뽑아냄.  
+Number는 해석할 수 없는 문자를 만나면 NaN / NaN == NaN => false  
+== 값만 비교, === 값, 자료형비교
+
+컴퓨터도 실수를해. 실수가 문제야. 부동소수점 문제
+
 ## 다시보기
 [메소드체이닝](https://ko.javascript.info/object-methods)
 - this 바인딩 : 일반함수 / 화살표함수
