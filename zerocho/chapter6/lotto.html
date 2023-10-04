@@ -24,6 +24,21 @@
 <div id="result">추첨결과: </div>
 <div id="bonus">보너스: </div>
 <script>
+    // 로또에 사용하는 공 45개 준비
+    const candidate = Array(45).fill().map((value, index) => index + 1);
+    const shuffle = [];
+    while (candidate.length > 0) {
+        const random = Math.floor(Math.random() * candidate.length); // 무작위 인덱스 뽑기
+        const spliceArray = candidate.splice(random, 1); //
+        const value = spliceArray[0];
+        shuffle.push(value);
+    }
+    console.log(shuffle);
+    // 당첨 6개 + 보너스 1개
+    const winBalls = shuffle.slice(0, 6).sort((a, b) => a - b);
+    const bonus = shuffle[6];
+    console.log(winBalls, bonus);
+    
 </script>
 </body>
 
