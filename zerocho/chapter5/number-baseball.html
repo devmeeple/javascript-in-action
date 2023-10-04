@@ -58,12 +58,38 @@
         $input.value = '';
         const valid = checkInput(value);
 
-        if (valid) {
-            // 유효한 입력 게임 실행
-            playerInput.push(value);
-        } else {
-            // 에러 발생
+        if (!valid) {
+            return;
         }
+
+        // 입력값 문제 없음
+        if (answer.join('') === value) {
+            $logs.textContent = '홈런!';
+            return;
+        }
+
+        // 기회는 10번
+        if (playerInput.length >= 9) {
+            const message = document.createTextNode(`패배! 정답은 ${answer.join('')}`);
+            $logs.appendChild(message);
+            return;
+        }
+
+        // 스트라이크 볼
+        let strike = 0;
+        let ball = 0;
+        for (let i = 0; i < answer.length; i++) {
+            const index = value.indexOf(answer[i]);
+            if (index > -1) { // 일치하는 수 발견
+                if (index === i) { // 자리까지 같음
+                    strike += 1;
+                } else { // 숫자만 일치함
+                    ball += 1;
+                }
+            }
+        }
+        $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼`, document.createElement('br'));
+        playerInput.push(value);
     });
 </script>
 </body>
