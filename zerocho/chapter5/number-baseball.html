@@ -34,6 +34,37 @@
         numbers.splice(index, 1);
     }
     console.log(answer);
+
+    const playerInput = [];
+    function checkInput(input) {
+        // 사용자의 입력 값을 전달받아 규칙에 맞게 유효한 입력인지 확인함
+        if (input.length !== 4) {
+            return alert('4자리 숫자를 입력하세요');
+        }
+
+        if (new Set(input).size !== 4) { // 중복된 숫자가 없는가
+            return alert('중복되지 않은 숫자를 입력하세요');
+        }
+
+        if (playerInput.includes(input)) {
+            return alert('이미 시도한 값입니다');
+        }
+        return true;
+    }
+
+    $form.addEventListener('submit', (event) => {
+        event.preventDefault(); // 기본 동작 막기 submit -> 새로고침
+        const value = $input.value;
+        $input.value = '';
+        const valid = checkInput(value);
+
+        if (valid) {
+            // 유효한 입력 게임 실행
+            playerInput.push(value);
+        } else {
+            // 에러 발생
+        }
+    });
 </script>
 </body>
 </html>
