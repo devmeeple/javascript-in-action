@@ -83,6 +83,20 @@
         let strike = 0;
         let ball = 0;
         let out = 0;
+
+        /*
+        answer.forEach((element, i) => {
+            const index = value.indexOf(element);
+            if (index > -1) {
+                if (index === 1) {
+                    strike += 1;
+                } else {
+                    ball += 1;
+                }
+            }
+        });
+         */
+        
         for (let i = 0; i < answer.length; i++) {
             const index = value.indexOf(answer[i]);
             if (index > -1) { // 일치하는 수 발견
