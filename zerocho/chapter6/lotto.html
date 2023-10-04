@@ -38,7 +38,29 @@
     const winBalls = shuffle.slice(0, 6).sort((a, b) => a - b);
     const bonus = shuffle[6];
     console.log(winBalls, bonus);
-    
+
+    // 일정 시간 후 실행하기(setTimeout)
+    const $result = document.querySelector('#result');
+    const $bonus = document.querySelector('#bonus');
+
+    // 중복이 발생하면 함수로, 다른 부분만 매개변수로 처리
+    // 중복을 제거하고 정상적으로 작동하는지 항상 확인할 것
+    const showBall = (number, $target) => {
+        const $ball = document.createElement('div');
+        $ball.className = 'ball';
+        $ball.textContent = number;
+        $target.appendChild($ball);
+    };
+
+    for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+            showBall(winBalls[i], $result);
+        }, (i + 1) * 1000);
+    }
+
+    setTimeout(() => {
+        showBall(bonus, $bonus);
+    }, 7000);
 </script>
 </body>
 
