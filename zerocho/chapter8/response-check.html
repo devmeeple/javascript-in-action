@@ -32,22 +32,31 @@
     const $screen = document.querySelector('#screen');
     const $result = document.querySelector('#result');
 
+    // 반응속도를 저장하는 변수 선언
+    let startTime;
+    let endTime;
+
     $screen.addEventListener('click', (event) => {
         if (event.target.classList.contains('waiting')) { // 시작 대기 파랑
             $screen.classList.remove('waiting');
             $screen.classList.add('ready');
             $screen.textContent = '초록색이 되면 클릭하세요';
             setTimeout(function () {
+                startTime = new Date();
                 $screen.classList.remove('ready');
                 $screen.classList.add('now');
                 $screen.textContent = '클릭하세요!';
                 // 시작 시간 재기
-            }, Math.floor(Math.random() * 1000) + 2000);
+            }, Math.floor(Math.random() * 1000) + 2000); // 2초에서 3초 사이
         } else if (event.target.classList.contains('ready')) { // 준비 빨강
 
         } else if (event.target.classList.contains('now')) { // 시작 초록
             // 끝 시간 확인
-            // 시간 차이 저장
+            endTime = new Date();
+            $result.textContent = `${endTime - startTime}ms`;
+            $screen.classList.remove('now');
+            $screen.classList.add('waiting');
+            $screen.textContent = '클릭해서 시작하세요';
         }
     });
 </script>
