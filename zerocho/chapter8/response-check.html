@@ -36,13 +36,14 @@
     let startTime;
     let endTime;
     const records = [];
+    let timeOutId;
 
     $screen.addEventListener('click', (event) => {
         if (event.target.classList.contains('waiting')) { // 시작 대기 파랑
             $screen.classList.remove('waiting');
             $screen.classList.add('ready');
             $screen.textContent = '초록색이 되면 클릭하세요';
-            setTimeout(function () {
+            timeOutId = setTimeout(function () {
                 startTime = new Date();
                 $screen.classList.remove('ready');
                 $screen.classList.add('now');
@@ -50,7 +51,10 @@
                 // 시작 시간 재기
             }, Math.floor(Math.random() * 1000) + 2000); // 2초에서 3초 사이
         } else if (event.target.classList.contains('ready')) { // 준비 빨강
-
+            clearTimeout(timeOutId);
+            $screen.classList.remove('ready');
+            $screen.classList.add('waiting');
+            $screen.textContent = '다시 도전해주세요!';
         } else if (event.target.classList.contains('now')) { // 시작 초록
             endTime = new Date();
             const current = endTime - startTime;
