@@ -60,15 +60,22 @@
     // 타이머 멈췄다 다시 실행하기
     let intervalId = setInterval(changeComputerHand, 50);
 
+    // 타이머 문제 해결 방안
+    // 1. 이벤트 리스너를 수정
+    // 2. 플래그 변수로 제어
+    let clickable = true;
     const clickButton = () => {
-        clearInterval(intervalId); // 기존 인터벌 중지
-        // 점수 계산 및 화면 표시
-        setTimeout(() => {
-            // 버그 수정
-            clearInterval(intervalId); // 버튼을 연속 클릭하여 남아있는 인터벌을 중지
-            intervalId = setInterval(changeComputerHand, 50); // 새로운 인터벌 시작
-        }, 1000);
+        if (clickable === true) {
+            clearInterval(intervalId); // 기존 인터벌 중지
+            clickable = false;
+            // 점수 계산 및 화면 표시
+            setTimeout(() => {
+                clickable = true;
+                intervalId = setInterval(changeComputerHand, 50); // 새로운 인터벌 시작
+            }, 1000);
+        }
     };
+
     $scissors.addEventListener('click', clickButton);
     $rock.addEventListener('click', clickButton);
     $paper.addEventListener('click', clickButton);
