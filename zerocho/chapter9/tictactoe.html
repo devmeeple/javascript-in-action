@@ -27,6 +27,21 @@
     const rows = [];
     let turn = 'O'; // 선 플레이어는 O 모양을 가진다
 
+    // 함수로 빼는 것은 좋다. 하지만 스코프가 유효한지 잘 확인해야 한다
+    const callback = (event) => {
+        // 칸에 글자가 있나? 유효성 여부 확인
+        if (event.target.textContent !== '') { // 비어있지 않으면
+            console.log('빈 칸이 아닙니다');
+            return;
+        }
+
+        // 빈 칸 이면 실행
+        console.log('빈 칸입니다');
+        event.target.textContent = turn;
+        // 삼항연산자를 통한 코드 수정
+        turn = (turn === 'X' ? 'O' : 'X');
+    };
+
     // 변수로 빼내서 재사용성을 높인다
     for (let i = 0; i < 3; i++) {
         const $tr = document.createElement('tr');
@@ -34,18 +49,7 @@
         for (let j = 0; j < 3; j++) {
             const $td = document.createElement('td');
             cells.push($td);
-            $td.addEventListener('click', (event) => {
-                console.log('클릭이벤트 발생');
-                // 칸에 글자가 있나? 유효성 여부 확인
-                if (event.target.textContent) return;
-                event.target.textContent = turn;
-                // 승부 확인
-                if (turn === 'O') {
-                    turn = 'X';
-                } else if (turn === 'X') {
-                    turn = 'O';
-                }
-            });
+            $td.addEventListener('click', callback);
             $tr.append($td);
         }
         rows.push(cells);
