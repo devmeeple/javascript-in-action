@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>틱택토</title>
+  <style>
+    table {
+        border-collapse: collapse;
+    }
+
+    td {
+        border: 1px solid black;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+<script>
+    const { body } = document; // 구조분해할당 const body = document.body;
+    const $table = document.createElement('table');
+    const $result = document.createElement('div');
+    const rows = [];
+    let turn = 'O'; // 선 플레이어는 O 모양을 가진다
+
+    const checkWinner = (target) => {
+        const rowIndex = target.parentNode.rowIndex;
+        const cellIndex = target.cellIndex;
+
+        // 세칸 다 채워졌나?
+        let hasWinner = false;
+        // 가로줄 검사
+        if (
+            rows[rowIndex][0].textContent === turn &&
+            rows[rowIndex][1].textContent === turn &&
+            rows[rowIndex][2].textContent === turn
+        ) {
+            hasWinner = true;
+        }
+        // 세로줄 검사
+        if (
+            rows[0][cellIndex].textContent === turn &&
+            rows[1][cellIndex].textContent === turn &&
+            rows[2][cellIndex].textContent === turn
+        ) {
+            hasWinner = true;
+        }
+        // 대각선 검사 : 대각선을 따로 분리해서 생각해야 한다 한 쪽만 채워져 있어도 true 가 실행될 수 있다.
+        // 1. 왼쪽위에서 아래로 내려가는 대각선
+        if (
+            rows[0][0].textContent === turn &&
+            rows[1][1].textContent === turn &&
+            rows[2][2].textContent === turn
+        ) {
+            hasWinner = true;
+        }
+        // 2. 왼쪽아래에서 위로 올라가는 대각선
+        if (
+            rows[1][1].textContent === turn &&
+            rows[0][2].textContent === turn &&
+            rows[2][0].textContent === turn
+        ) {
+            hasWinner = true;
+        }
+        return hasWinner;
+    };
+
+    const checkWinnerAndDraw = (target) => {
+        const hasWinner = checkWinner(target);
+        // 승자가 있으면
+        if (hasWinner) {
+            $result.textContent = `${turn}님의 승입니다`;
+            $table.removeEventListener('click', callback); // 이벤트 리스너 제거
+            return;
+        }
+
+        // 승자가 없으면
+        const draw = rows.flat().every((cell) => cell.textContent);
+        if (draw) {
+            $result.textContent = '무승부';
+            $table.removeEventListener('click', callback); // 이벤트 리스너 제거
+            return;
+        }
+        turn = (turn === 'X' ? 'O' : 'X');
+    };
+
+    // 함수로 빼는 것은 좋다. 하지만 스코프가 유효한지 잘 확인해야 한다
+    const callback = (event) => {
+        // 칸에 글자가 있나? 유효성 여부 확인
+        if (event.target.textContent !== '') { // 비어있지 않으면
+            console.log('빈 칸이 아닙니다');
+            return;
+        }
+
+        // 빈 칸 이면 실행
+        console.log('빈 칸입니다');
+        event.target.textContent = turn;
+        // 승부 판단하기
+        checkWinnerAndDraw(event.target);
+        // 컴퓨터 턴의 시작
+        if (turn === 'X') {
+            const emptyCells = rows.flat().filter((v) => !v.textContent);
+            const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+            randomCell.textContent = 'X';
+            checkWinnerAndDraw(event.target);
+        }
+    };
+
+    // 변수로 빼내서 재사용성을 높인다
+    for (let i = 0; i < 3; i++) {
+        const $tr = document.createElement('tr');
+        const cells = [];
+        for (let j = 0; j < 3; j++) {
+            const $td = document.createElement('td');
+            cells.push($td);
+            $tr.append($td);
+        }
+        rows.push(cells);
+        $table.append($tr);
+    }
+    $table.addEventListener('click', callback);
+    body.append($table);
+    body.append($result);
+</script>
+</body>
+</html>
