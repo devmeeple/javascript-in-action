@@ -22,12 +22,35 @@
 <body>
 <script>
     // 2차원 배열 선언 방법
-    // 빈 배열을 선언하고 배열을 삽입해서 3 * 3 배열을 만든다.
+    // 빈 배열을 선언하고 배열을 삽입해서 3 * 3 배열을 만든다
+    let turn = 'O'; // 선 플레이어는 O 모양을 가진다
     const data = [];
     for (let i = 0; i < 3; i++) {
         data.push([]);
     }
+
+    // 변수로 빼내서 재사용성을 높인다
     const $table = document.createElement('table');
+    for (let i = 0; i < 3; i++) {
+        const $tr = document.createElement('tr');
+        for (let i = 0; i < 3; i++) {
+            const $td = document.createElement('td');
+            $td.addEventListener('click', (event) => {
+                console.log('클릭이벤트 발생');
+                // 칸에 글자가 있나? 유효성 여부 확인
+                if (event.target.textContent) return;
+                event.target.textContent = turn;
+                // 승부 확인
+                if (turn === 'O') {
+                    turn = 'X';
+                } else if (turn === 'X') {
+                    turn = 'O';
+                }
+            });
+            $tr.append($td);
+        }
+        $table.append($tr);
+    }
     document.body.append($table);
 </script>
 </body>
