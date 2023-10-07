@@ -117,16 +117,6 @@
             $monsterHp.textContent = `HP: ${monster.hp}/${monster.maxHp}`;
             $monsterAtt.textContent = `ATT: ${monster.att}`;
 
-            const monster1 = JSON.parse(JSON.stringify(monsterList[0]));
-            const monster2 = monsterList[0];
-            const monster3 = {...monster[0]};
-            monster1.name = '새 몬스터';
-            console.log(monsterList[0].name); // 슬라임
-            monster2.name = '새 몬스터';
-            console.log(monsterList[0].name); // 새 몬스터
-            console.log(monsterList[0] === monster1); // false, 깊은 복사
-            console.log(monsterList[0] === monster2); // true, 참조 관계
-
         } else if (input === '2') {
             // 휴식
         } else if (input === '3') {
