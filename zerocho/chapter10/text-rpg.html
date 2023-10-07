@@ -69,6 +69,14 @@
         hp: 100,
         xp: 0,
         att: 10,
+        attack(monster) {
+            monster.hp -= this.att;
+            this.hp -= monster.hp;
+        },
+        heal(monster) {
+            this.hp += 20;
+            this.hp -= monster.att;
+        },
     };
 
     let monster = null;
@@ -128,12 +136,14 @@
 
     $battleMenu.addEventListener('submit', (event) => {
         const input = event.target['battle-input'].value;
-        if (input === '1') {
-            // 공격
-        } else if (input === '2') {
-            // 회복
-        } else if (input === '3') {
-            // 도망
+        if (input === '1') { // 공격
+            hero.attack(monster);
+            monster.attack(hero);
+            $heroHp.textContent = `HP: ${hero.hp}/${hero.maxHp}`;
+            $monsterHp.textContent = `HP: ${monster.hp}/${monster.maxHp}`;
+            $message.textContent = `${hero.att}의 데미지를 입히고, ${monster.att}의 데미지를 입었습니다!`;
+        } else if (input === '2') { // 회복
+        } else if (input === '3') { // 도망
         }
     });
 </script>
