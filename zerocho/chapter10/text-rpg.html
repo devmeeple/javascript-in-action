@@ -96,9 +96,11 @@
     $gameMenu.addEventListener('submit', (event) => {
         event.preventDefault();
         const input = event.target['menu-input'].value;
-        if (input === '1') {
+        if (input === '1') { // 모험
             $gameMenu.style.display = 'none';
             $battleMenu.style.display = 'block';
+            // 깊은 복사 : 필요한 것은 객체자체가 아니라 객체안의 데이터
+            // 객체가 복사되야 하는지 참조되야 하는지 한번 더 생각해야 한다
             monster = JSON.parse(
                 JSON.stringify(monsterList[Math.floor(Math.random() * monsterList.length)])
             );
@@ -106,6 +108,17 @@
             $monsterName.textContent = `${monster.name}`;
             $monsterHp.textContent = `HP: ${monster.hp}/${monster.maxHp}`;
             $monsterAtt.textContent = `ATT: ${monster.att}`;
+
+            const monster1 = JSON.parse(JSON.stringify(monsterList[0]));
+            const monster2 = monsterList[0];
+            const monster3 = {...monster[0]};
+            monster1.name = '새 몬스터';
+            console.log(monsterList[0].name); // 슬라임
+            monster2.name = '새 몬스터';
+            console.log(monsterList[0].name); // 새 몬스터
+            console.log(monsterList[0] === monster1); // false, 깊은 복사
+            console.log(monsterList[0] === monster2); // true, 참조 관계
+
         } else if (input === '2') {
             // 휴식
         } else if (input === '3') {
