@@ -47,3 +47,7 @@ console.log(`original.b.c: ${original.b.c} / deepCopy.b.c: ${deepCopy.b.c}`); //
 - 객체를 JSON 문법으로 표현된 문자열로 변경하고 다시 JSON 객체로 변환하는 방식
 - 단, 숨겨진 프로퍼티인 `__proto` 나 `getter/setter` 등과 같이 `JSON`으로 변경할 수 없는 프로퍼티는 무시됨.
 - `lodash` 라이브러리를 사용하거나, `_.cloneDeep()` 메서드를 사용하는 것도 하나의 방법이다.
+
+## 더보기
+- [참조에 의한 객체복사](https://ko.javascript.info/object-copy#cloning-and-merging-object-assign)
+- [객체의 복사](https://www.zerocho.com/category/JavaScript/post/5750d384b73ae5152792188d)
