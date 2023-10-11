@@ -111,11 +111,13 @@
             }, 1000);
             return;
         }
+        clickable = false;
         setTimeout(() => {
             // 틀렸으면 다시 뒤집어 놓기
             clicked[0].classList.remove('flipped');
             clicked[1].classList.remove('flipped');
             clicked = [];
+            clickable = true;
         }, 500);
     }
 
