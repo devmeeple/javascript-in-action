@@ -57,6 +57,7 @@
     let shuffled = [];
     let clicked = [];
     let completed = [];
+    let clickable = false;
 
     // 피셔 예이츠 셔플 사용
     function shuffle() {
@@ -83,6 +84,10 @@
     }
 
     function onClickCard() {
+        // 뒤집히는 동안 클릭 막기, 완료된 카드 클릭 막기, 방금 클릭한 카드 클릭 막기(연속)
+        if (!clickable || completed.includes(this) || clicked[0] === this) {
+            return;
+        }
         this.classList.toggle('flipped');
         clicked.push(this);
         if (clicked.length !== 2) {
@@ -100,7 +105,10 @@
             if (completed.length !== total) {
                 return;
             }
-            alert('완료했습니다!');
+            setTimeout(() => {
+                alert('축하합니다!');
+                resetGame();
+            }, 1000);
             return;
         }
         setTimeout(() => {
@@ -112,6 +120,7 @@
     }
 
     function startGame() {
+        clickable = false;
         shuffle();
         for (let i = 0; i < total; i += 1) {
             const card = createCard(i);
@@ -129,9 +138,18 @@
             document.querySelectorAll('.card').forEach((card) => {
                 card.classList.remove('flipped');
             });
+            clickable = true;
         }, 5000);
     }
     startGame();
+
+    function resetGame() {
+        $wrapper.innerHTML = '';
+        colorCopy = colors.concat(colors);
+        shuffled = [];
+        completed = [];
+        startGame();
+    }
 </script>
 </body>
 </html>
