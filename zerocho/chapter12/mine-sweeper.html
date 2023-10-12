@@ -112,6 +112,42 @@
         }
     }
 
+    function countMine(rowIndex, cellIndex) {
+        const mines = [CODE.MINE, CODE.QUESTION_MINE, CODE.FLAG_MINE];
+        let i = 0;
+        /**
+         * 이해가 잘 되지 않는 부분(8방향을 확인)
+         * 1 2 3
+         * 4 5 6
+         * 7 8 9
+         */
+        mines.includes(data[rowIndex - 1]?.[cellIndex - 1]) && i++; // 1
+        mines.includes(data[rowIndex - 1]?.[cellIndex]) && i++; // 2
+        mines.includes(data[rowIndex - 1]?.[cellIndex + 1]) && i++; // 3
+        mines.includes(data[rowIndex][cellIndex - 1]) && i++; // 4
+        mines.includes(data[rowIndex][cellIndex + 1]) && i++; // 6
+        mines.includes(data[rowIndex + 1]?.[cellIndex - 1]) && i++; // 7
+        mines.includes(data[rowIndex + 1]?.[cellIndex]) && i++; // 8
+        mines.includes(data[rowIndex + 1]?.[cellIndex + 1]) && i++; // 9
+        return i;
+    }
+
+    function onLeftClick(event) {
+        const target = event.target;
+        const rowIndex = target.parentNode.rowIndex;
+        const cellIndex = target.cellIndex;
+        const cellData = data[rowIndex][cellIndex];
+        if (cellData === CODE.NORMAL) { // 닫힌 칸이면
+            const count = countMine(rowIndex, cellIndex);
+            target.textContent = count || '';
+            target.className = 'opened';
+            data[rowIndex][cellIndex] = count;
+        } else if (cellData === CODE.MINE) { // 지뢰 칸이면
+
+        } // 나머지는 무시
+        // 아무 동작도 하지 않음
+    }
+
     /**
      * 테이블을 그리는 함수
      */
@@ -129,6 +165,7 @@
             });
             $tbody.append($tr);
             $tbody.addEventListener('contextmenu', onRightClick);
+            $tbody.addEventListener('click', onLeftClick);
         });
     }
     drawTable();
