@@ -77,6 +77,42 @@
     }
 
     /**
+     * 우클릭 이벤트 함수
+     */
+    function onRightClick(event) {
+        event.preventDefault(); // 브라우저 기본동작 제어
+        const target = event.target;
+        const rowIndex = target.parentNode.rowIndex;
+        const cellIndex = target.cellIndex;
+        const cellData = data[rowIndex][cellIndex];
+        if (cellData === CODE.MINE) { // 지뢰여부 검증
+            data[rowIndex][cellIndex] = CODE.QUESTION_MINE; // 물음표 지뢰로 변경
+            target.className = 'question';
+            target.textContent = '?';
+        } else if (cellData === CODE.QUESTION_MINE) { // 물음표 지뢰면
+            data[rowIndex][cellIndex] = CODE.FLAG_MINE; // 깃발 지뢰로 변경
+            target.className = 'flag';
+            target.textContent = '!';
+        } else if (cellData === CODE.FLAG_MINE) { // 깃발 지뢰면
+            data[rowIndex][cellIndex] = CODE.MINE; // 지뢰로
+            target.className = '';
+            target.textContent = 'X';
+        } else if (cellData === CODE.NORMAL) { // 닫힌 칸이면
+            data[rowIndex][cellIndex] = CODE.QUESTION;
+            target.className = 'question';
+            target.textContent = '?';
+        } else if (cellData === CODE.QUESTION) {
+            data[rowIndex][cellIndex] = CODE.FLAG;
+            target.className = 'flag';
+            target.textContent = '!';
+        } else if (cellData === CODE.FLAG) {
+            data[rowIndex][cellIndex] = CODE.NORMAL;
+            target.className = '';
+            target.textContent = '';
+        }
+    }
+
+    /**
      * 테이블을 그리는 함수
      */
     function drawTable() {
@@ -92,6 +128,7 @@
                 $tr.append($td);
             });
             $tbody.append($tr);
+            $tbody.addEventListener('contextmenu', onRightClick);
         });
     }
     drawTable();
