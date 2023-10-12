@@ -143,7 +143,10 @@
             target.className = 'opened';
             data[rowIndex][cellIndex] = count;
         } else if (cellData === CODE.MINE) { // 지뢰 칸이면
-
+            target.textContent = '펑';
+            target.className = 'opened';
+            $tbody.removeEventListener('contextmenu', onRightClick);
+            $tbody.removeEventListener('click', onLeftClick);
         } // 나머지는 무시
         // 아무 동작도 하지 않음
     }
