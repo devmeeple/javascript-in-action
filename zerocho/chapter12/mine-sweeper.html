@@ -22,11 +22,13 @@
   </style>
 </head>
 <body>
+<div id="timer">0초</div>
 <table id="table">
   <tbody></tbody>
 </table>
 <div id="result"></div>
 <script>
+    const $timer = document.querySelector('#timer');
     const $tbody = document.querySelector('#table tbody');
     const $result = document.querySelector('#result');
     // 줄, 칸, 지뢰는 추후 사용자 입력으로 변경예정
@@ -43,6 +45,12 @@
         OPENED: 0, // 0이상이라면 모두 열린 칸
     }
     let data;
+    let openCount = 0;
+    let startTime = new Date();
+    const interval = setInterval(() => {
+        const time = Math.floor((new Date() - startTime) / 1000);
+        $timer.textContent = `${time}초`;
+    }, 1000);
 
     /**
      * 랜덤하게 지뢰를 심는 함수
@@ -133,6 +141,7 @@
     }
 
     function open(rowIndex, cellIndex) {
+        if (data[rowIndex]?.[cellIndex] >= CODE.OPENED) return; // 한번 열였으면 종료
         const target = $tbody.children[rowIndex]?.children[cellIndex];
         if (!target) {
             return;
@@ -141,6 +150,17 @@
         target.textContent = count || '';
         target.className = 'opened';
         data[rowIndex][cellIndex] = count;
+        openCount++;
+        console.log(openCount);
+        if (openCount === row * cell - mine) {
+            const time = (new Date() - startTime) / 1000;
+            clearInterval(interval);
+            $tbody.removeEventListener('contextmenu', onRightClick);
+            $tbody.removeEventListener('click', onLeftClick);
+            setTimeout(() => { // 화면이 먼저 표시되고 alert가 뜰 수 있도록 setTimemout 사용
+                alert(`승리! 소요시간: ${time}초`);
+            }, 500);
+        }
         return count;
     }
 
@@ -171,6 +191,7 @@
         } else if (cellData === CODE.MINE) { // 지뢰 칸이면
             target.textContent = '펑';
             target.className = 'opened';
+            clearInterval(interval);
             $tbody.removeEventListener('contextmenu', onRightClick);
             $tbody.removeEventListener('click', onLeftClick);
         } // 나머지는 무시
