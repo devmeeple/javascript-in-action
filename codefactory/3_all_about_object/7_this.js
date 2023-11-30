@@ -7,40 +7,40 @@
  * *****하지만 this 키워드는 바인딩이 객체가 생성되는 시점에 결정된다.
  */
 const testFunction = function () {
-    return this;
+  return this;
 };
 
 console.log(testFunction());
 console.log(testFunction() === global);
 
 const yuJin = {
-    name: '안유진',
-    year: 2003,
-    sayHello: function () {
-        return `안녕하세요. 저는 ${this.name} 입니다.`;
-    },
-}
+  name: '안유진',
+  year: 2003,
+  sayHello() {
+    return `안녕하세요. 저는 ${this.name} 입니다.`;
+  },
+};
 
 console.log(yuJin.sayHello());
 
 function Person(name, year) {
-    this.name = name;
-    this.year = year;
+  this.name = name;
+  this.year = year;
 
-    this.sayHello = function () {
-        return `안녕하세요. 저는 ${this.name} 입니다.`;
-    };
+  this.sayHello = function () {
+    return `안녕하세요. 저는 ${this.name} 입니다.`;
+  };
 }
 
 const yuJin2 = new Person('안유진', 2003);
 console.log(yuJin2.sayHello());
 
 Person.prototype.dance = function () {
-    function dance2() {
-        return `${this.name}이 춤을 춥니다.`;
-    }
+  function dance2() {
+    return `${this.name}이 춤을 춥니다.`;
+  }
 
-    return dance2();
+  return dance2();
 };
 console.log(yuJin2.dance());
 
@@ -58,13 +58,13 @@ console.log(yuJin2.dance());
  * 3) bind()
  */
 function returnName() {
-    return this.name;
+  return this.name;
 }
 
 console.log(returnName());
 
 const yuJin3 = {
-    name: '안유진',
+  name: '안유진',
 };
 
 console.log(returnName.call(yuJin3));
@@ -75,11 +75,11 @@ console.log(returnName.apply(yuJin3));
  * 2) apply -> 아규먼트를 리스트로 입력해야 한다.
  */
 function multiply(x, y, z) {
-    return `${this.name} / 결과 값: ${x * y * z}`;
+  return `${this.name} / 결과 값: ${x * y * z}`;
 }
 
 console.log(multiply.call(yuJin3, 3, 4, 5));
-console.log(multiply.apply(yuJin3, [ 3, 4, 5] ));
+console.log(multiply.apply(yuJin3, [3, 4, 5]));
 
 /**
  * bind()

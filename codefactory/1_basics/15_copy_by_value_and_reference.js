@@ -5,7 +5,7 @@
  * 1) 기본적으로 모든 primitive 값은 copy by value 다.
  * 2) 객체는 copy by reference 다.
  */
-let original = '안녕하세요';
+const original = '안녕하세요';
 let clone = original;
 
 console.log(original);
@@ -17,8 +17,8 @@ console.log(original);
 console.log(clone);
 
 let originalObj = {
-    name: '안유진',
-    group: '아이브',
+  name: '안유진',
+  group: '아이브',
 };
 let cloneObj = originalObj;
 
@@ -27,7 +27,7 @@ console.log(cloneObj);
 
 console.log('---------------');
 
-originalObj['group'] = '미플';
+originalObj.group = '미플';
 console.log(originalObj);
 console.log(cloneObj);
 
@@ -35,23 +35,23 @@ console.log(originalObj === cloneObj);
 console.log(original === clone);
 
 originalObj = {
-    name: '마틴 파울러',
-    group: '미플',
+  name: '마틴 파울러',
+  group: '미플',
 };
 cloneObj = {
-    name: '마틴 파울러',
-    group: '미플',
+  name: '마틴 파울러',
+  group: '미플',
 };
 console.log(originalObj === cloneObj);
 
 const yuJin1 = {
-    name: '안유진',
-    group: '아이브',
+  name: '안유진',
+  group: '아이브',
 };
 const yuJin2 = yuJin1;
 const yuJin3 = {
-    name: '안유진',
-    group: '아이브',
+  name: '안유진',
+  group: '아이브',
 };
 
 console.log(yuJin1 === yuJin2); // true
@@ -62,33 +62,30 @@ console.log(yuJin2 === yuJin3); // false
  * Spread Operator
  */
 const yuJin4 = {
-    ...yuJin3,
+  ...yuJin3,
 };
 console.log(yuJin4);
 
 console.log(yuJin4 === yuJin3);
 
 const yuJin5 = {
-    year: 2003,
-    ...yuJin3,
+  year: 2003,
+  ...yuJin3,
 };
 console.log(yuJin5);
 
 const yuJin6 = {
-    name: '미플',
-    ...yuJin3,
+  name: '미플',
+  ...yuJin3,
 };
 console.log(yuJin6);
 
 const yuJin7 = {
-    ...yuJin3,
-    name: '미플',
+  ...yuJin3,
+  name: '미플',
 };
 console.log(yuJin7);
 
 const numbers = [1, 3, 5];
-const numbers2 = [
-    ...numbers,
-    10,
-];
+const numbers2 = [...numbers, 10];
 console.log(numbers2);

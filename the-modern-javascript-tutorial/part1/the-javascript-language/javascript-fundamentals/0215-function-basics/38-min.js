@@ -1,10 +1,10 @@
 function min(a, b) {
-    if (a < b) {
-        return a;
-    } else {
-        return b;
-    }
-    // return (a < b) ? a : b;
+  if (a < b) {
+    return a;
+  }
+  return b;
+
+  // return (a < b) ? a : b;
 }
 
 console.log(min(2, 5));

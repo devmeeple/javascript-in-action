@@ -8,8 +8,8 @@ const testObj = {};
 console.log(testObj.__proto__);
 
 function IdolModel(name, year) {
-    this.name = name;
-    this.year = year;
+  this.name = name;
+  this.year = year;
 }
 
 console.log(IdolModel.prototype);
@@ -37,12 +37,12 @@ console.log(yuJin.toString());
 console.log(Object.prototype.toString());
 
 function IdolModel2(name, year) {
-    this.name = name;
-    this.year = year;
+  this.name = name;
+  this.year = year;
 
-    this.sayHello = function () {
-        return `${this.name}이 인사를 합니다.`;
-    };
+  this.sayHello = function () {
+    return `${this.name}이 인사를 합니다.`;
+  };
 }
 
 const yuJin2 = new IdolModel2('안유진', 2003);
@@ -55,12 +55,12 @@ console.log(yuJin2.sayHello === wonYoung2.sayHello);
 console.log(yuJin2.hasOwnProperty('sayHello'));
 
 function IdolModel3(name, year) {
-    this.name = name;
-    this.year = year;
+  this.name = name;
+  this.year = year;
 }
 
 IdolModel3.prototype.sayHello = function () {
-    return `${this.name}이 인사를 합니다.`;
+  return `${this.name}이 인사를 합니다.`;
 };
 
 const yuJin3 = new IdolModel3('안유진', 2003);
@@ -74,7 +74,7 @@ console.log(yuJin3.sayHello === wonYoung3.sayHello);
 console.log(yuJin3.hasOwnProperty('sayHello'));
 
 IdolModel3.sayStaticHello = function () {
-    return '안녕하세요. 저는 static method 입니다.';
+  return '안녕하세요. 저는 static method 입니다.';
 };
 
 console.log(IdolModel3.sayStaticHello());
@@ -83,16 +83,16 @@ console.log(IdolModel3.sayStaticHello());
  * Overriding
  */
 function IdolModel4(name, year) {
-    this.name = name;
-    this.year = year;
+  this.name = name;
+  this.year = year;
 
-    this.sayHello = function () {
-        return '안녕하세요. 저는 인스턴스 메서드입니다!';
-    };
+  this.sayHello = function () {
+    return '안녕하세요. 저는 인스턴스 메서드입니다!';
+  };
 }
 
 IdolModel4.prototype.sayHello = function () {
-    return '안녕하세요. 저는 prototype 메서드입니다!';
+  return '안녕하세요. 저는 prototype 메서드입니다!';
 };
 
 const yuJin4 = new IdolModel4('안유진', 2003);
@@ -106,21 +106,21 @@ console.log(yuJin4.sayHello());
  * 인스턴스의 __proto__ 변경 vs 함수의 prototype 변경
  */
 function IdolModel(name, year) {
-    this.name = name;
-    this.year = year;
+  this.name = name;
+  this.year = year;
 }
 
 IdolModel.prototype.sayHello = function () {
-    return `${this.name} 인사를 합니다.`;
+  return `${this.name} 인사를 합니다.`;
 };
 
 function FemaleIdolModel(name, year) {
-    this.name = name;
-    this.year = year;
+  this.name = name;
+  this.year = year;
 
-    this.dance = function () {
-        return `${this.name}가 춤을 춥니다.`;
-    };
+  this.dance = function () {
+    return `${this.name}가 춤을 춥니다.`;
+  };
 }
 
 const gaEul = new IdolModel('가을', 2002);

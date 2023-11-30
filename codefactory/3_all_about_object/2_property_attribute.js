@@ -7,8 +7,8 @@
  *                      예를들면 getter와 setter
  */
 const yuJin = {
-    name: '안유진',
-    year: 2003,
+  name: '안유진',
+  year: 2003,
 };
 
 console.log(Object.getOwnPropertyDescriptor(yuJin, 'year'));
@@ -29,16 +29,16 @@ console.log(Object.getOwnPropertyDescriptor(yuJin, 'name'));
 console.log(Object.getOwnPropertyDescriptors(yuJin));
 
 const yuJin2 = {
-    name: '안유진',
-    year: 2003,
+  name: '안유진',
+  year: 2003,
 
-    get age() {
-        return new Date().getFullYear() - this.year;
-    },
+  get age() {
+    return new Date().getFullYear() - this.year;
+  },
 
-    set age(age) {
-        this.year = new Date().getFullYear() - age;
-    },
+  set age(age) {
+    this.year = new Date().getFullYear() - age;
+  },
 };
 
 console.log(yuJin2);
@@ -51,10 +51,10 @@ console.log(yuJin2.year);
 console.log(Object.getOwnPropertyDescriptor(yuJin2, 'age'));
 
 Object.defineProperty(yuJin2, 'height', {
-    value: 172,
-    writable: true,
-    enumerable: true,
-    configurable: true,
+  value: 172,
+  writable: true,
+  enumerable: true,
+  configurable: true,
 });
 console.log(yuJin2);
 console.log(Object.getOwnPropertyDescriptor(yuJin2, 'height'));
@@ -66,7 +66,7 @@ console.log(yuJin2);
  * Writable
  */
 Object.defineProperty(yuJin2, 'height', {
-    writable: false,
+  writable: false,
 });
 console.log(Object.getOwnPropertyDescriptor(yuJin2, 'height'));
 
@@ -78,20 +78,20 @@ console.log(yuJin2);
  * Enumerable
  */
 console.log(Object.keys(yuJin2));
-for (let key in yuJin2) {
-    console.log(key);
+for (const key in yuJin2) {
+  console.log(key);
 }
 
 Object.defineProperty(yuJin2, 'name', {
-    enumerable: false,
+  enumerable: false,
 });
 
 console.log(Object.getOwnPropertyDescriptor(yuJin2, 'name'));
 
 console.log('-----------------');
 console.log(Object.keys(yuJin2));
-for (let key in yuJin2) {
-    console.log(key);
+for (const key in yuJin2) {
+  console.log(key);
 }
 console.log(yuJin2);
 console.log(yuJin2.name);
@@ -100,8 +100,8 @@ console.log(yuJin2.name);
  * Configurable
  */
 Object.defineProperty(yuJin2, 'height', {
-    writable: true,
-    configurable: false,
+  writable: true,
+  configurable: false,
 });
 console.log(Object.getOwnPropertyDescriptor(yuJin2, 'height'));
 
@@ -110,15 +110,15 @@ console.log(Object.getOwnPropertyDescriptor(yuJin2, 'height'));
 // });
 
 Object.defineProperty(yuJin2, 'height', {
-    value: 172,
+  value: 172,
 });
 console.log(Object.getOwnPropertyDescriptor(yuJin2, 'height'));
 
 Object.defineProperty(yuJin2, 'height', {
-    writable: false,
+  writable: false,
 });
 console.log(Object.getOwnPropertyDescriptor(yuJin2, 'height'));
 
 Object.defineProperty(yuJin2, 'height', {
-    writable: true,
+  writable: true,
 });

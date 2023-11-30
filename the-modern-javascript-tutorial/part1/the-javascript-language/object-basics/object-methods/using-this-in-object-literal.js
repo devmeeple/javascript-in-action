@@ -1,10 +1,10 @@
 function makeUser() {
-    return {
-        name: 'John',
-        ref: this
-    };
+  return {
+    name: 'John',
+    ref: this,
+  };
 }
 
-let user = makeUser();
+const user = makeUser();
 
-console.log( user.ref.name ); // 에러발생
+console.log(user.ref.name); // 에러발생
