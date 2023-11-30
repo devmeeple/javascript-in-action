@@ -1,2 +1,2 @@
-let ourPlanetName = "Earth";
-let currentUserName = "John";
+const ourPlanetName = 'Earth';
+const currentUserName = 'John';

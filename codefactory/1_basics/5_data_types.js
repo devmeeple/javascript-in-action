@@ -61,7 +61,7 @@ console.log(iveWonYoung);
 
 const backSlash = '아이브\\미플';
 console.log(backSlash);
-const singleQuotation = '아이브\'미플';
+const singleQuotation = "아이브'미플";
 console.log(singleQuotation);
 
 const iveWonYoung2 = `아이브 
@@ -71,7 +71,7 @@ console.log(iveWonYoung2);
 console.log(typeof iveWonYoung2);
 
 const groupName = '아이브';
-console.log(groupName + ' 안유진');
+console.log(`${groupName} 안유진`);
 console.log(`${groupName} 안유진`);
 console.log('-----------------');
 
@@ -102,7 +102,7 @@ console.log(typeof noInit);
  * JS에서는 개발자가 명시적으로 없는 값으로 초기화할때
  * 사용된다.
  */
-let init = null;
+const init = null;
 console.log(init);
 console.log(typeof init); // 버그
 console.log('-----------------');
@@ -138,9 +138,9 @@ const dictionary = {
 };
 
 console.log(dictionary);
-console.log(dictionary['red']);
-console.log(dictionary['orange']);
-console.log(dictionary['yellow']);
+console.log(dictionary.red);
+console.log(dictionary.orange);
+console.log(dictionary.yellow);
 
 console.log(typeof dictionary);
 
@@ -149,14 +149,7 @@ console.log(typeof dictionary);
  *
  * 값을 리스트로 나열할 수 있는 타입이다.
  */
-const iveMembersArray = [
-  '안유진',
-  '가을',
-  '레이',
-  '장원영',
-  '리즈',
-  '이서',
-];
+const iveMembersArray = ['안유진', '가을', '레이', '장원영', '리즈', '이서'];
 console.log(iveMembersArray);
 
 /**

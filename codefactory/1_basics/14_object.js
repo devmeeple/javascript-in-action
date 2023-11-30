@@ -2,17 +2,17 @@
  * Object / 객체
  */
 // key : value pair
-let yuJin = {
-    name: '안유진',
-    group: '아이브',
-    dance: function () {
-        return `${this.name}이 춤을 춥니다.`;
-    },
+const yuJin = {
+  name: '안유진',
+  group: '아이브',
+  dance() {
+    return `${this.name}이 춤을 춥니다.`;
+  },
 };
 
 console.log(yuJin);
 console.log(yuJin.name);
-console.log(yuJin['name']);
+console.log(yuJin.name);
 
 const key = 'name';
 
@@ -27,22 +27,22 @@ const groupKey = 'group';
 const groupValue = '아이브';
 
 const yuJin2 = {
-    [nameKey]: nameValue,
-    [groupKey]: groupValue,
-    dance: function () {
-        return `${this.name}이 춤을 춥니다.`;
-    },
+  [nameKey]: nameValue,
+  [groupKey]: groupValue,
+  dance() {
+    return `${this.name}이 춤을 춥니다.`;
+  },
 };
 console.log(yuJin2);
 console.log(yuJin2.dance());
 
-yuJin2['group'] = '미플';
+yuJin2.group = '미플';
 console.log(yuJin2);
 
-yuJin2['englishName'] = 'An Yu Jin';
+yuJin2.englishName = 'An Yu Jin';
 console.log(yuJin2);
 
-delete yuJin2['englishName'];
+delete yuJin2.englishName;
 console.log(yuJin2);
 
 /**
@@ -52,13 +52,13 @@ console.log(yuJin2);
  * 2) 객체 안의 프로퍼티나 메서드는 변경할 수 있다.
  */
 const wonYoung = {
-    name: '장원영',
-    group: '아이브',
+  name: '장원영',
+  group: '아이브',
 };
 console.log(wonYoung);
 
 // wonYoung = {};
-wonYoung['group'] = '미플';
+wonYoung.group = '미플';
 console.log(wonYoung);
 
 /**
@@ -74,6 +74,6 @@ console.log(Object.values(wonYoung));
 const name = '안유진';
 
 const yuJin3 = {
-    name,
+  name,
 };
 console.log(yuJin3);

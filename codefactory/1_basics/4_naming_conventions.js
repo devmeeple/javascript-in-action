@@ -9,8 +9,8 @@
  * 4) 키워드는 변수명으로 사용할 수 없다.
  *    var const = 'var';
  */
-let meeple = '미플';
-var $ive = '아이브';
+const meeple = '미플';
+const $ive = '아이브';
 const _yujin = '안유진';
 
 console.log(meeple);

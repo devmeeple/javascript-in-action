@@ -108,7 +108,7 @@ console.log(number);
  * 2) 값과 타입의 비교
  */
 
-console.log(5 == 5);
+console.log(5 === 5);
 console.log(5 == '5');
 console.log(0 == '');
 console.log(true == 1);
@@ -124,7 +124,7 @@ console.log(true === '1');
 
 console.log('---------------');
 
-console.log(5 != 5);
+console.log(5 !== 5);
 console.log(5 != '5');
 console.log(0 != '');
 console.log(true != 1);

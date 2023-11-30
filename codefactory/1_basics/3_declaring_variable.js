@@ -8,7 +8,7 @@
 var name = '미플';
 console.log(name);
 
-var age = 27;
+const age = 27;
 console.log(age);
 
 let ive = '아이브';

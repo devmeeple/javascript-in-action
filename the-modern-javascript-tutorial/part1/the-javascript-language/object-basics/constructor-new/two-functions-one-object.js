@@ -1,10 +1,11 @@
-let obj = {};
+const obj = {};
 
 function A() {
-    return obj;
-}
-function B() {
-    return obj;
+  return obj;
 }
 
-console.log( new A() === new B() ); // true
+function B() {
+  return obj;
+}
+
+console.log(new A() === new B()); // true

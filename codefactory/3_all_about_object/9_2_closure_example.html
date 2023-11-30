@@ -1,15 +1,15 @@
 <script>
-    function getNumber() {
-        var number = 5;
+  function getNumber () {
+    var number = 5
 
-        function innerGetNumber() {
-            return number;
-        }
-
-        return innerGetNumber;
+    function innerGetNumber () {
+      return number
     }
 
-    var runner = getNumber();
+    return innerGetNumber
+  }
 
-    console.log(runner());
+  var runner = getNumber()
+
+  console.log(runner())
 </script>

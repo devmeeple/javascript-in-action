@@ -1,40 +1,59 @@
 ## 불변 객체
+
 불변 객체는 최근 자바스크립트 진영에서 가장 중요한 개념 중 하나이다. `불변객체` 는 왜 중요한 개념일까? 먼저 개념에 대해 알아보고, 사례도 함께 알아보자.
 
 ### 개념
+
 > 불변(不變) 사물의 모양이나 성질이 변하지 아니함. 또는 변하게 하지 아니함.
 
 의미 그대로 생성된 후에 그 상태가 변경되지 않은 객체를 의미한다. 함수형 프로그래밍에서 매우 중요한 개념이며, 최근에는 객체지향 프로그래밍과 다양한 개발
-패러다임에서도 점점 더 중요해지고 있다. 
+패러다임에서도 점점 더 중요해지고 있다.
 
 ### 중요한 이유
+
 1. 예측 가능성 (Predictability)
+
 - 불변 객체를 사용하면, 데이터의 상태가 변하지 않기 때문에 코드의 진행을 예측하기 쉽다. 예측가능한 코드는 디버깅이 쉬우며, 유지보수 비용이 적다는 것을 의미한다.
+
 2. 병렬 처리 (Concurrency)
+
 - 여러 스레드나 작업이 동시에 같은 데이터에 접근할 때, 데이터가 불변이라면 동시성 문제를 크게 줄일 수 있다. 이는 멀티스레드 환경에 중요하다.
+
 3. 함수형 프로그래밍 (Functional Programming)
+
 - 함수형 프로그래밍에서는 불변성이 중요한 원칙 중 하나이다. 불변 객체를 사용하면 순수 함수를 쉽게 구현할 수 있고, 이는 다양한 최적화와 코드 재사용성을 높인다.
+
 4. 데이터 흐름의 명확성 (Data Flow)
+
 - 불변 객체를 사용하면, 데이터가 어떻게 변화하는지 명확하게 추적할 수 있다. 이로 인해 코드의 복잡성이 줄어들고, 이해하기 쉬운 코드 작성에 도움을 준다.
 
 ### 사례
+
 - 리액트(React) : UI 라이브러리로, 컴포넌트의 상태를 불변 객체로 관리하는 것을 권장한다.
+
 ```javascript
 // 잘못된 예
-this.state.list.push("new item");
+this.state.list.push('new item');
 
 // 올바른 예
-this.setState({ list: [...this.state.list, "new item"] });
+this.setState({ list: [...this.state.list, 'new item'] });
 ```
+
 ## 얕은 복사 / 깊은 복사
+
 해당 개념들은 객체를 다룰 때 이야기한다. 객체의 복사는 값을 복사하는게 아니라 참조(주소값)를 복사한다.
+
 ### 얕은 복사
+
 객체의 최상위 프로퍼티만 복사한다. 내부의 중첩된 객체는 참조값으로 복사되기 때문에 원본 객체와 복사된 객체가 중첩된 객체를 공유한다.
+
 - 얕은 복사는 중첩된 객체를 복사할 때 문제가 있다.
 - 이를 해결하기 위해서는 깊은 복사가 필요하다.
 
 ### 깊은 복사
+
 깊은 복사는 객체의 모든 중첩된 프로퍼티까지 재귀적으로 복사한다. 따라서 복사된 객체와 원본 객체는 완전히 독립적이다.
+
 ```javascript
 const original = { a: 1, b: { c: 2 } };
 const deepCopy = JSON.parse(JSON.stringify(original));
@@ -42,12 +61,16 @@ deepCopy.b.c = 3;
 
 console.log(`original.b.c: ${original.b.c} / deepCopy.b.c: ${deepCopy.b.c}`); // original.b.c: 2 / deepCopy.b.c: 3
 ```
+
 ## 간단한 깊은 복사
+
 `JSON.parse(JSON.stringify(target))`
+
 - 객체를 JSON 문법으로 표현된 문자열로 변경하고 다시 JSON 객체로 변환하는 방식
 - 단, 숨겨진 프로퍼티인 `__proto` 나 `getter/setter` 등과 같이 `JSON`으로 변경할 수 없는 프로퍼티는 무시됨.
 - `lodash` 라이브러리를 사용하거나, `_.cloneDeep()` 메서드를 사용하는 것도 하나의 방법이다.
 
 ## 더보기
+
 - [참조에 의한 객체복사](https://ko.javascript.info/object-copy#cloning-and-merging-object-assign)
 - [객체의 복사](https://www.zerocho.com/category/JavaScript/post/5750d384b73ae5152792188d)

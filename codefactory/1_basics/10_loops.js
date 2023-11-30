@@ -23,7 +23,7 @@ for (let i = 0; i < 3; i++) {
 
 // *을 이용해서 6x6의 정사각형을 출력해라
 let square = '';
-let side = 6;
+const side = 6;
 
 for (let i = 0; i < side; i++) {
   for (let j = 0; j < side; j++) {
@@ -44,7 +44,7 @@ const yuJin = {
 
 console.log('-------------');
 
-for (let key in yuJin) {
+for (const key in yuJin) {
   console.log(key);
 }
 
@@ -52,7 +52,7 @@ const iveMembersArray = ['안유진', '가을', '레이', '장원영', '리즈',
 
 console.log('-------------');
 
-for (let key in iveMembersArray) {
+for (const key in iveMembersArray) {
   console.log(key);
   console.log(`${key}:${iveMembersArray[key]}`);
 }
@@ -60,7 +60,7 @@ for (let key in iveMembersArray) {
 /**
  * for...of
  */
-for (let value of iveMembersArray) {
+for (const value of iveMembersArray) {
   console.log(value);
 }
 
