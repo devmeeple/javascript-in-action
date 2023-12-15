@@ -1,1 +1,0 @@
-alert( 1 && null && 2); // null 첫 번째 falsy
