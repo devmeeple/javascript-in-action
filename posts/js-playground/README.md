@@ -15,11 +15,37 @@
 
 > Chrome 개발자 도구 단축키: `cmd + option + i` / `F12`
 
-크롬 개발자 도구를 이용하여 콘솔에서 출력하기
+* 크롬 개발자 도구를 이용하여 콘솔에서 출력하기
 
 ```javascript
 console.log('Hello, World!');
 ```
 
+* `hello.html` 작성하기
+
+```html
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JavaScript Playground</title>
+</head>
+<body>
+<h1>자바스크립트 플레이그라운드</h1>
+<script>console.log('Hello, World!');</script>
+</body>
+</html>
+```
+
+### github 사용하기
+
+```shell
+git add [파일]
+git commit -m [커밋메시지]
+git push
+```
 
 
