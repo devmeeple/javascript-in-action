@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>연습문제1 - 2</title>
+</head>
+<body>
+<h1>체질량지수(BMI)</h1>
+<p>체질량지수는 몸무게(kg)를 키의 제곱(m)으로 나눈 값이다.</p>
+<script>
+  const heightInCm = +prompt('신장을 입력해주세요(cm): ') / 100;
+  const weight = +prompt('몸무게를 입력해주세요(kg): ');
+  const bmi = weight / (heightInCm ** 2);
+  document.write(`당신의 BMI는 ${bmi.toFixed(2)} 입니다.`);
+</script>
+</body>
+</html>
