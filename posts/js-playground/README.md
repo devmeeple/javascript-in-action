@@ -81,4 +81,27 @@ const celsius = (fahrenheit - 32) / 1.8;
 const name = string.length;
 ```
 
+## 연습문제2
 
+* 사용자가 입력한 숫자가 소수인지 아닌지 알려주는 프로그램을 작성하라
+
+## 소수 판별 프로그램
+
+> 소수란 약수가 1과 자기 자신뿐인 수를 의미한다.
+
+```javascript
+const num = parseInt(prompt('숫자를 입력해주세요'), 10);
+```
+
+수를 입력받고 10진수로 변환한다.
+
+```javascript
+for (let i = 2; i < num; i++) {
+  if (num % i === 0) {
+    isPrime = false;
+    break;
+  }
+}
+```
+
+소수는 1을 제외한다. 나머지가 0일 경우 소수가 아니다.
