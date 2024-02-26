@@ -126,3 +126,36 @@ for (let i = 2; i < num; i++) {
     * 예) 5를 입력하면 5단 전체를 계산해 출력한다.
 * 콘솔 버전과 웹 버전 두 가지를 작성한다.
 * `gugudan3.html`과 `gugudan4.html`에 정의한다.
+
+## 6, 7단 구현 - 반복문
+
+* 단순, 반복적인 작업을 변수와 반복문을 활용해 6단과 7단을 구현한다.
+* `gugudan5.html`과 `gugudan6.html`에 정의한다.
+
+```javascript
+const dan = document.getElementById('dan').value;
+```
+
+input에 작성된 값을 가져온다.
+
+```javascript
+const resultDiv = document.getElementById('result');
+resultDiv.innerHTML = '';
+```
+
+result로 선언한 div를 가져온 후 값을 초기화 시킨다.
+
+```javascript
+for (let i = 1; i < 10; i++) {
+  const content = document.createElement('div');
+  content.textContent = `${dan} × ${i} = ${dan * i} `;
+  resultDiv.appendChild(content);
+}
+```
+
+새로운 div를 선언하고 계산 결과를 result(부모) 의 자식으로 가장 마지막에 추가한다.
+
+### textContent / innerHTML
+
+* 텍스트만 다룰경우 `textContent`
+* HTML을 반환할경우 `innerHTML`

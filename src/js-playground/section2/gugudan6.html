@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>6, 7단 구현 - 반복문</title>
+</head>
+<body>
+<h1>6, 7단 구현: 화면에 출력하는 프로그램</h1>
+<label for="dan">출력할 단: </label><input type="text" name="dan" id="dan">
+<button onclick="runGugudan()">확인</button>
+<div id="result"></div>
+<script>
+  function runGugudan () {
+    const dan = document.getElementById('dan').value;
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = '';
+
+    for (let i = 1; i < 10; i++) {
+      const content = document.createElement('div');
+      content.textContent = `${dan} × ${i} = ${dan * i}`;
+      resultDiv.appendChild(content);
+    }
+  }
+</script>
+</body>
+</html>
