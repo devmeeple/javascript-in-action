@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>연습문제3 - 소수 출력하기</title>
+</head>
+<body>
+<h1>소수 출력하기</h1>
+<div class="requirement">
+  <h2>요구사항</h2>
+  <ul>
+    <li>1 ~ 10000 사이의 소수를 화면에 출력하는 프로그램을 작성한다</li>
+    <li>HTML + JS로 작성할 것</li>
+    <li>객체와 메소드를 사용할 것</li>
+    <li>최선을 다할 것</li>
+  </ul>
+</div>
+<div id="result"></div>
+<script>
+  const numbers = {
+    all: [],
+    prime: [],
+
+    /**
+     * 빈 배열에 값을 추가하는 함수
+     * @param max_num 10000
+     */
+
+    addAllNumber (max_num) {
+      for (let i = 2; i <= max_num; i += 1) {
+        this.all.push(i);
+      }
+    },
+
+    /**
+     * 소수 여부를 판단하는 함수
+     * @param number
+     */
+    isPrime (number) {
+      for (let i = 2; i < number; i += 1) {
+        if (number % i === 0) {
+          return false;
+        }
+      }
+
+      return true;
+    },
+
+    /**
+     * 소수 배열에 내용을 추가하는 함수
+     */
+    calcPrime () {
+      for (let i = 0; i < this.all.length; i += 1) {
+        let n = this.all[i];
+        if (this.isPrime(n)) {
+          this.prime.push(n);
+        }
+      }
+    },
+
+    /**
+     * 결과 출력 함수
+     * @returns {string}
+     */
+    getAllPrime () {
+      let result = '';
+      result += `<h2>🚀 전체 소수의 갯수: ${this.prime.length} </h2><ul>`;
+      for (let i = 0; i < this.prime.length; i += 1) {
+        result += `<li>${i + 1} 번째 소수 ${this.prime[i]}</li>`;
+      }
+      result += `</ul>`;
+
+      return result;
+    },
+
+  };
+
+  numbers.addAllNumber(10000);
+  numbers.calcPrime();
+
+  const result = document.getElementById('result');
+  result.innerHTML = numbers.getAllPrime();
+</script>
+</body>
+</html>
