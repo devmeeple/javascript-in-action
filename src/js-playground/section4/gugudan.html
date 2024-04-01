@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>구구단 구현하기</title>
+</head>
+<body>
+<div class="requirement">
+  <h1>미션 - 구구단</h1>
+  <h2>🚀 요구사항</h2>
+  <p>구구단 결과를 배열에 저장한 후 배열의 결과를 출력한다</p>
+  <ul>
+    <li>구구단을 콘솔에 출력하는 프로그램</li>
+    <li>구구단을 html에 출력하는 프로그램</li>
+    <li>github 저장소</li>
+  </ul>
+</div>
+<div id="result"></div>
+<script>
+  const multiplicationTable = {
+    result: [],
+    max_length: 9,
+
+    /**
+     * 빈 배열에 구구단 요소 추가
+     */
+    addMultiplicationTable () {
+      for (let i = 2; i <= this.max_length; i += 1) {
+        for (let j = 1; j <= this.max_length; j += 1) {
+          this.result.push(`${i} x ${j} = ${i * j}`);
+        }
+      }
+    },
+
+    /**
+     * 배열의 내용을 출력
+     * @returns {string}
+     */
+    getAllMultiplicationTable () {
+      let result = '';
+      result += `<h2>구구단 결과</h2><ul>`;
+      for (let i = 0; i <= this.result.length; i += 1) {
+        result += `<li>${this.result[i]}</li>`;
+      }
+      result += `</ul>`;
+
+      return result;
+    },
+
+    main () {
+      this.addMultiplicationTable();
+      return this.getAllMultiplicationTable();
+    },
+  };
+
+  // 계산 결과를 배열에 저장
+
+  /**
+   * 배열을 선언하는 방법
+   *
+   * 1) 배열 리터럴: const arr = [];
+   * 2) 생성자 함수: const arr = new Array(5); 길이가 5인 빈 배열 선언
+   * 3) Array.of
+   * 4) Array.from:: Array.from({length: 9}, (_, index) => index); 두 번째 인수로 콜백 함수 전달
+   */
+
+  const result = document.getElementById('result');
+  result.innerHTML = multiplicationTable.main();
+</script>
+</body>
+</html>
