@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>최종과제 - 구구단</title>
+</head>
+<body>
+<h1>학습 목표</h1>
+<ul>
+  <li>학습한 내용을 활용해 한 단계 더 난이도가 있는 문제를 구현한다.</li>
+</ul>
+<h2>🚀 최종 요구사항</h2>
+<ul>
+  <li>참고자료, 교재, 인터넷의 도움 없이 백지 상태에서 구구단을 구현</li>
+  <li>사용자가 입력한 값에 따라 크기가 다른 구구단을 계산, 출력</li>
+  <li>8, 7과 같은 문자열을 입력하면 팔칠단을 구현 ex) 2 * 1 ... 8 * 8</li>
+  <li>html, css, DOM 등을 배워서 화면을 구성</li>
+</ul>
+<h3>힌트</h3>
+<ul>
+  <li>사용자가 입력한 값을 문자열로 받음</li>
+  <li>사용자가 입력한 값을 쉼표를 기준으로 분리</li>
+  <li>쉼표를 기준으로 분리한 문자열을 숫자로 변환</li>
+  <li>반복문을 실행해 곱셈 결과를 화면에 출력</li>
+</ul>
+<h2>⭐️ 조언</h2>
+<ul>
+  <li>과정 중 자신 없는 부분, 이해가 되지 않는 부분을 정리하고 해당 부분을 연습</li>
+  <li>전체 과정을 반복 연습, 반복 연습하며 힌트를 줄여가며 연습</li>
+  <li>각 단계에서 이해한 내용, 이해하지 못한 부분을 정리, 이해하지 못한 부분은 다른 미션을 통해 극복하기 위해 연습</li>
+  <li>새롭게 등장하는 용어들을 자신의 이해 수준으로 정리하는 연습</li>
+</ul>
+<h3>🚨 왜?</h3>
+<ul>
+  <li>ES6 문법을 어떻게 활용해야하는가? (반복문 개선)</li>
+  <li>출력형식 지정 (html, css , DOM 활용)</li>
+  <li>함수를 분리하여 구조화 하는 작업이 능숙하지 않음</li>
+</ul>
+<script>
+  const multiplicationTable = {
+    result: [], // 계산결과를 저장
+
+    /**
+     * 데이터를 입력받는 함수
+     * @returns {number[]}
+     */
+    updateUserInput () {
+      const inputString = prompt('값을 입력해주세요 예) 8, 7');
+
+      // 입력을 하지 않으면 에러가 발생
+
+      return inputString.split(',').map(Number); // 입력 분리, 기준: ,
+    },
+
+    /**
+     * 구구단의 결과를 계산하는 함수
+     */
+    calculate (numbers) {
+      const [first, second] = numbers;
+
+      for (let i = 2; i <= first; i += 1) {
+        for (let j = 1; j <= second; j += 1) {
+          this.result.push(i * j);
+        }
+      }
+    },
+
+    /**
+     * 출력형식을 결정하는 함수
+     */
+    print () {
+    },
+
+    /**
+     * 프로그램을 실행시키는 함수
+     */
+    main () {
+      const numbers = this.updateUserInput();
+      this.calculate(numbers);
+      this.print();
+    },
+  };
+
+  multiplicationTable.main();
+
+
+</script>
+</body>
+</html>
