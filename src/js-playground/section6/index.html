@@ -27,7 +27,21 @@
     <li>배열, 메소드, 클래스를 활용해 프로그래밍 하는 방법</li>
   </ul>
 </div>
-<div id="result"></div>
+<div id="calc-content">
+  <h2>계산기 프로그램 구현</h2>
+  <div class="input-box">
+    <label for="first-number">첫 번째 숫자: </label>
+    <input type="text" name="first" id="first-number" />
+  </div>
+  <div class="input-box">
+    <label for="second-number">두 번째 숫자: </label>
+    <input type="text" name="second" id="second-number" />
+    <div>
+      <button id="calc-button">계산하기</button>
+    </div>
+  </div>
+</div>
+<div id="calc-result"></div>
 <script>
   class StringCalculator {
     // 사용자 입력
@@ -39,24 +53,43 @@
     }
 
     // 출력
-    print () {}
+    print (result) {
+      const resultDiv = document.getElementById('calc-result');
+      resultDiv.innerHTML = `
+      <p>합 : ${result.addition}</p>
+      <p>차 : ${result.subtraction}</p>
+      <p>곱 : ${result.multiplication}</p>
+      <p>나눗셈 : ${result.division}</p>
+      `;
+    }
 
     // 실행
-    static main () {
-      // while 반복하다가 return
-      const num1 = 10;
-      const num2 = 3;
+    main () {
+      const str1 = document.getElementById('first-number').value;
+      const str2 = document.getElementById('second-number').value;
+      const num1 = Number(str1);
+      const num2 = Number(str2);
 
-      // const result = document.getElementById('result');
+      const result = {
+        addition: num1 + num2,
+        subtraction: num1 - num2,
+        multiplication: num1 * num2,
+        division: Math.floor(num1 / num2),
+      };
 
-      console.log(num1 + num2);
-      console.log(num1 - num2);
-      console.log(num1 * num2);
-      console.log(Math.floor(num1 / num2));
+      this.print(result);
+
     }
   }
 
-  StringCalculator.main();
+  const calculator = new StringCalculator();
+
+  const calcButton = document.getElementById('calc-button');
+
+  calcButton.addEventListener('click', () => {
+    calculator.main();
+  });
+
 </script>
 </body>
 </html>
