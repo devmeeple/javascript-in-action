@@ -83,12 +83,14 @@ if (!password?.trim()) {
 
 1. `password`가 `null`또는 `undefined`라면 `trim()` 메서드를 실행하지 않고[^1] `undefined`를 반환한다.
 2. `password`가 빈 문자열이라면 `password?.trim()`은 빈 문자열 `''`을 반환한다.
-3. `!` 연산자는 `undefined`, 빈 문자열, `null`과 같은 `falsy`값[^2]을 `true`로 변환한다.
+3. `!` 연산자는 `undefined`, 빈 문자열, `null`과 같은 `Falsy`값[^2]을 `true`로 변환한다.
 4. 조건문이 실행돼서 `PasswordStrength.INVALID`를 반환한다.
 
 **<참고 자료>**
 
-- [MDN Web Docs 'Optional chaining (?.)'](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
 - [The Modern JavaScript Tutorial 'Optional chaining](https://javascript.info/optional-chaining)
+- [MDN Web Docs 'Optional chaining (?.)'](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+- [MDN Web Docs 'String.prototype.trim()'](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim)
 
-[^1]: 단축 평가
+[^1]: 단락(short-circuit, 혹은 단축) 평가
+[^2]: [Mdn Web Docs 'Falsy'](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)

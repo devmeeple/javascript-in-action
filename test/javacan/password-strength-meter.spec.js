@@ -1,15 +1,5 @@
-const meter = (password) => {
-  if (!password?.trim()) {
-    return PasswordStrength.INVALID;
-  }
+const { meter } = require('../../src/javacan/password-strength-meter');
 
-  return PasswordStrength.VALID;
-};
-
-const PasswordStrength = {
-  VALID: '유효한 비밀번호 입니다.',
-  INVALID: '유효하지 않은 비밀번호 입니다.',
-};
 describe('PasswordStrengthMeterTest', () => {
   it('유효한 비밀번호를 입력한다. [성공]', () => {
     // given
