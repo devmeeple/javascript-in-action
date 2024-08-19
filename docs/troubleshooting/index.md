@@ -1,6 +1,8 @@
 # 트러블 슈팅(Troubleshooting)
 
-## 비밀번호 빈 문자열 검증하기
+## 빈 문자열 검증하기
+
+> [빈 문자열 검증하기](https://devmeeple.github.io/empty-string-checking/)
 
 비밀번호가 빈 문자열인지 검증하는 테스트를 작성했다.
 리팩터링 중 `옵셔널 체이닝(Optional chaining)`과 `trim()` 메서드 개념이 부족하다고 느꼈다.
@@ -94,3 +96,18 @@ if (!password?.trim()) {
 
 [^1]: 단락(short-circuit, 혹은 단축) 평가
 [^2]: [Mdn Web Docs 'Falsy'](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
+
+## npm-audit
+
+> npm Docs 'npm-audit'
+
+```shell
+npm audit [fix|signatures]
+```
+
+audit은 프로젝트 보안 취약점을 검사하는 명령어다. 프로젝트에 설치된 패키지의 의존성에서 발생하는 문제를 추적한다.
+npm audit 명령을 실행해서 취약점을 확인하고, npm audit fix 명령을 통해 자동 업데이트 가능하다.
+
+### 한계: 그럼에도 불구하고
+
+취약점에 따라 자동으로 해결되지 않을 수 있다. 이럴 때는 npm audit fix --force 또는 수동으로 문제를 해결한다.
