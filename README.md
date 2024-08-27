@@ -8,5 +8,6 @@
 
 - [모던 JavaScript 튜토리얼](https://ko.javascript.info/)
 - [mdn web docs](https://developer.mozilla.org/ko/docs/Web/JavaScript)
-- [인프런 제로초 자바스크립트](https://www.inflearn.com/course/%EB%A0%88%EC%B8%A0%EA%B8%B0%EB%A6%BF-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8)
-- [쏙쏙 들어오는 함수형 코딩](https://product.kyobobook.co.kr/detail/S000001952246)
+- [제로초(조현영) '[리뉴얼] 코딩자율학습 제로초의 자바스크립트 입문'](https://inf.run/Ewd6n)
+- [『무던한 개발자를 위한 모던한 자바스크립트』(카이 호스트만, 한빛미디어, 2021)](https://product.kyobobook.co.kr/detail/S000001810463)
+- [『쏙쏙 들어오는 함수형 코딩』(에릭 노먼드, 제이펍, 2022)](https://product.kyobobook.co.kr/detail/S000001952246)
