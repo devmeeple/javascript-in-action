@@ -1,3 +1,5 @@
+const { produce } = require('immer');
+
 describe('불변 객체 만들기', () => {
   describe('Object.freeze()', () => {
     it('[성공] 불변 객체를 만든다.', () => {
@@ -77,6 +79,40 @@ describe('불변 객체 만들기', () => {
       expect(sut.details).not.toBe(user.details);
       expect(sut.details.age).toBe(22);
       expect(user.details.age).toBe(21);
+    });
+  });
+
+  describe('Immer 라이브러리', () => {
+    it('[성공] 깊은 복사를 지원하는 불변 객체를 만든다.', () => {
+      // given
+      const ive = {
+        name: '안유진',
+        details: {
+          age: 21,
+          birth: '대전광역시 서구 둔산동',
+        },
+      };
+
+      // when
+      const sut = produce(ive, (draft) => {
+        draft.details.age = 22;
+        draft.details.birth = '2023/09/01';
+      });
+
+      // then
+      // 1. 원본 객체는 변경되지 않는다.
+      expect(ive.details.age).toBe(21);
+      expect(ive.details.birth).toBe('대전광역시 서구 둔산동');
+
+      // 2. 새로운 객체를 생성하고 수정한다.
+      expect(sut.details.age).toBe(22);
+      expect(sut.details.birth).toBe('2023/09/01');
+
+      // 3. 참조 값이 다르다.
+      expect(sut).not.toBe(ive);
+
+      // 4. 중첩 객체 또한 불변하다.
+      expect(sut.details).not.toBe(ive.details);
     });
   });
 });
