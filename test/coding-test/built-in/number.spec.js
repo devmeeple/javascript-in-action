@@ -11,7 +11,7 @@ describe('Number', () => {
       expect(sut).toBe(1000000);
     });
   });
-
+  
   describe('[Math.ceil] 올림 하는 정적 메서드', () => {
     it('성적표를 제공할 때 학급 평균을 올림 한 점수를 제공한다.', () => {
       // given
