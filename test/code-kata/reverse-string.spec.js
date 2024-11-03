@@ -1,12 +1,14 @@
 describe('Reversed Strings', () => {
-  it('문자열을 뒤집는다.', () => {
+  it.each([
+    ['world', 'dlrow'],
+    ['word', 'drow'],
+  ])('문자열 %s를 뒤집는다.', (word, expected) => {
     // given
-    const word = 'world';
 
     // when
     const result = [...word].reverse().join('');
 
     // then
-    expect(result).toBe('dlrow');
+    expect(result).toBe(expected);
   });
 });
