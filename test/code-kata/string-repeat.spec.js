@@ -1,13 +1,18 @@
 describe('String repeat', () => {
-  it('문자열을 반복한다.', () => {
+  it.each([
+    [6, 'I', 'IIIIII'],
+    [5, 'Hello', 'HelloHelloHelloHelloHello'],
+  ])('문자열을 반복한다.', (count, word, expected) => {
     // given
-    const count = 6;
-    const word = 'I';
 
     // when
-    const result = word.repeat(count);
+    const result = repeatStr(count, word);
 
     // then
-    expect(result).toBe('IIIIII');
+    expect(result).toBe(expected);
   });
 });
+
+function repeatStr(count, word) {
+  return word.repeat(count);
+}
